@@ -12,7 +12,7 @@ licenses := Seq(
   )
 )
 
-scalaVersion := "2.12.10"
+scalaVersion := "2.13.4"
 crossScalaVersions := Seq("2.11.12", "2.12.10", scalaVersion.value)
 
 scalacOptions ++= Seq("-deprecation", "-feature")
