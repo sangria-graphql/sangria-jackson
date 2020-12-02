@@ -12,7 +12,7 @@ licenses := Seq(
   )
 )
 
-scalaVersion := "2.13.4"
+scalaVersion := "2.12.10"
 crossScalaVersions := Seq("2.11.12", "2.12.10", scalaVersion.value)
 
 scalacOptions ++= Seq("-deprecation", "-feature")
@@ -74,6 +74,16 @@ inThisBuild(
     semanticdbVersion := scalafixSemanticdb.revision
   )
 )
+
+Compile / unmanagedSourceDirectories := {
+  // TODO: Make this more resilient to dotty?
+  if (scalaVersion.value startsWith "2.13") {
+    (Compile / unmanagedSourceDirectories).value
+  } else {
+    val compatDir = sourceDirectory.value / "compat"
+    (Compile / unmanagedSourceDirectories).value :+ compatDir
+  }
+}
 
 commands += Command.command("format") { state =>
   "compile:scalafixAll" ::
