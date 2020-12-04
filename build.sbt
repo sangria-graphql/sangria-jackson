@@ -1,7 +1,7 @@
 name := "sangria-jackson"
 organization := "org.sangria-graphql"
 mimaPreviousArtifacts := Set(
-  "org.sangria-graphql" %% "sangria-jackson" % "1.0.0"
+  "org.sangria-graphql" %% "sangria-jackson" % "0.0.1"
 )
 
 description := "Sangria jackson marshalling"
