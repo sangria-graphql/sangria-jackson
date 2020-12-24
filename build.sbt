@@ -13,24 +13,24 @@ licenses := Seq(
 )
 
 scalaVersion := "2.13.4"
-crossScalaVersions := Seq("2.11.12", "2.12.10", scalaVersion.value)
+ThisBuild / crossScalaVersions := Seq("2.12.12", scalaVersion.value)
+ThisBuild / scalaVersion := crossScalaVersions.value.last
+ThisBuild / githubWorkflowPublishTargetBranches := List()
+ThisBuild / githubWorkflowBuildPreamble += WorkflowStep.Sbt(
+  List("scalafmtCheckAll"),
+  name = Some("Check formatting"))
 
 scalacOptions ++= Seq("-deprecation", "-feature")
+scalacOptions ++= Seq("-target:jvm-1.8")
 
 scalacOptions ++= {
-  if (scalaVersion.value startsWith "2.13")
+  if (scalaVersion.value.startsWith("2.13"))
     Seq("-Wunused")
-  else if (scalaVersion.value startsWith "2.11")
-    Seq("-target:jvm-1.7")
   else
-    Seq("-target:jvm-1.8")
+    List.empty[String]
 }
-javacOptions ++= {
-  if (scalaVersion.value startsWith "2.11")
-    Seq("-source", "7", "-target", "7")
-  else
-    Seq("-source", "8", "-target", "8")
-}
+
+javacOptions ++= Seq("-source", "8", "-target", "8")
 
 libraryDependencies ++= Seq(
   "org.sangria-graphql" %% "sangria-marshalling-api" % "1.0.4",
@@ -47,9 +47,9 @@ publishArtifact in Test := false
 pomIncludeRepository := (_ => false)
 publishTo := Some(
   if (version.value.trim.endsWith("SNAPSHOT"))
-    "snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+    "snapshots".at("https://oss.sonatype.org/content/repositories/snapshots")
   else
-    "releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+    "releases".at("https://oss.sonatype.org/service/local/staging/deploy/maven2")
 )
 
 // Site and docs
