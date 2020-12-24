@@ -59,7 +59,6 @@ enablePlugins(GhpagesPlugin)
 git.remoteRepo := "git@github.com:org.sangria-graphql/sangria-jackson.git"
 
 // nice *magenta* prompt!
-
 shellPrompt in ThisBuild := { state =>
   scala.Console.MAGENTA + Project
     .extract(state)
@@ -74,16 +73,6 @@ inThisBuild(
     semanticdbVersion := scalafixSemanticdb.revision
   )
 )
-
-Compile / unmanagedSourceDirectories := {
-  // TODO: Make this more resilient to dotty?
-  if (scalaVersion.value startsWith "2.13") {
-    (Compile / unmanagedSourceDirectories).value
-  } else {
-    val compatDir = sourceDirectory.value / "compat"
-    (Compile / unmanagedSourceDirectories).value :+ compatDir
-  }
-}
 
 commands += Command.command("format") { state =>
   "compile:scalafixAll" ::
