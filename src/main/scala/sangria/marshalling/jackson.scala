@@ -12,11 +12,7 @@ import com.fasterxml.jackson.databind.node.{
   TextNode,
   ValueNode
 }
-import com.fasterxml.jackson.databind.{
-  DeserializationFeature,
-  JsonNode,
-  ObjectMapper
-}
+import com.fasterxml.jackson.databind.{DeserializationFeature, JsonNode, ObjectMapper}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 import sangria.marshalling._
@@ -61,7 +57,7 @@ object jackson {
     def optionalArrayNodeValue(value: Option[JsonNode]): JsonNode =
       value match {
         case Some(v) => v
-        case None    => nullNode
+        case None => nullNode
       }
 
     def scalarNode(
@@ -70,13 +66,13 @@ object jackson {
         info: Set[ScalarValueInfo]
     ): ValueNode =
       value match {
-        case v: String     => json.textNode(v)
-        case v: Boolean    => json.booleanNode(v)
-        case v: Int        => json.numberNode(v)
-        case v: Long       => json.numberNode(v)
-        case v: Float      => json.numberNode(v)
-        case v: Double     => json.numberNode(v)
-        case v: BigInt     => json.numberNode(v.bigInteger)
+        case v: String => json.textNode(v)
+        case v: Boolean => json.booleanNode(v)
+        case v: Int => json.numberNode(v)
+        case v: Long => json.numberNode(v)
+        case v: Float => json.numberNode(v)
+        case v: Double => json.numberNode(v)
+        case v: BigInt => json.numberNode(v.bigInteger)
         case v: BigDecimal => json.numberNode(v.bigDecimal)
         case v =>
           throw new IllegalArgumentException("Unsupported scalar value: " + v)
@@ -91,8 +87,7 @@ object jackson {
     def renderPretty(node: JsonNode): String = node.toPrettyString
   }
 
-  implicit object JacksonMarshallerForType
-      extends ResultMarshallerForType[JsonNode] {
+  implicit object JacksonMarshallerForType extends ResultMarshallerForType[JsonNode] {
     val marshaller: JacksonResultMarshaller.type = JacksonResultMarshaller
   }
 
@@ -126,16 +121,16 @@ object jackson {
 
     def getScalarValue(node: JsonNode): Any = node match {
       case b if b.isBoolean => b.asBoolean()
-      case i if i.isInt     => i.asInt()
-      case d if d.isDouble  => d.asDouble()
-      case l if l.isLong    => l.asLong()
+      case i if i.isInt => i.asInt()
+      case d if d.isDouble => d.asDouble()
+      case l if l.isLong => l.asLong()
       case d if d.isBigDecimal =>
         BigDecimal.javaBigDecimal2bigDecimal(d.decimalValue())
       case t if t.isTextual => t.asText()
       case b if b.isBigInteger =>
         BigInt.javaBigInteger2bigInt(b.bigIntegerValue())
       case f if f.isFloat => f.floatValue()
-      case _              => throw new IllegalStateException(s"$node is not a scalar value")
+      case _ => throw new IllegalStateException(s"$node is not a scalar value")
     }
 
     def getScalaScalarValue(node: JsonNode): Any = getScalarValue(node)

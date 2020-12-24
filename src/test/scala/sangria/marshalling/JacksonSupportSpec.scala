@@ -2,11 +2,7 @@ package sangria.marshalling
 
 import scala.jdk.CollectionConverters._
 
-import com.fasterxml.jackson.databind.{
-  DeserializationFeature,
-  JsonNode,
-  ObjectMapper
-}
+import com.fasterxml.jackson.databind.{DeserializationFeature, JsonNode, ObjectMapper}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 import org.scalatest.matchers.should.Matchers
@@ -27,22 +23,22 @@ class JacksonSupportSpec
   val json = mapper.getNodeFactory()
 
   "jackson integration" should {
-    behave like `value (un)marshaller`(JacksonResultMarshaller)
+    behave.like(`value (un)marshaller`(JacksonResultMarshaller))
 
-    behave like `AST-based input unmarshaller`(JacksonFromInput[JsonNode])
-    behave like `AST-based input marshaller`(JacksonResultMarshaller)
+    behave.like(`AST-based input unmarshaller`(JacksonFromInput[JsonNode]))
+    behave.like(`AST-based input marshaller`(JacksonResultMarshaller))
 
-    behave like `input parser`(
-      ParseTestSubjects(
-        complex =
-          """{"a": [null, 123, [{"foo": "bar"}]], "b": {"c": true, "d": null}}""",
-        simpleString = "\"bar\"",
-        simpleInt = "12345",
-        simpleNull = "null",
-        list = "[\"bar\", 1, null, true, [1, 2, 3]]",
-        syntaxError = List("[123, \"FOO\" \"BAR\"")
-      )
-    )
+    behave.like(
+      `input parser`(
+        ParseTestSubjects(
+          complex = """{"a": [null, 123, [{"foo": "bar"}]], "b": {"c": true, "d": null}}""",
+          simpleString = "\"bar\"",
+          simpleInt = "12345",
+          simpleNull = "null",
+          list = "[\"bar\", 1, null, true, [1, 2, 3]]",
+          syntaxError = List("[123, \"FOO\" \"BAR\"")
+        )
+      ))
   }
 
   val root = json.objectNode()
