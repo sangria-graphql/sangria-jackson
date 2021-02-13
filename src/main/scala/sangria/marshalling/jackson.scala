@@ -1,6 +1,6 @@
 package sangria.marshalling
 
-import scala.jdk.CollectionConverters._
+import collection.JavaConverters._
 import scala.math.{BigDecimal, BigInt}
 import scala.util.Try
 
@@ -14,8 +14,7 @@ import com.fasterxml.jackson.databind.node.{
 }
 import com.fasterxml.jackson.databind.{DeserializationFeature, JsonNode, ObjectMapper}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
-import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
-import sangria.marshalling._
+import com.fasterxml.jackson.module.scala.ScalaObjectMapper
 
 object jackson {
   private object util {
