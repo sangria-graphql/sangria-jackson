@@ -1,6 +1,6 @@
 package sangria.marshalling
 
-import scala.jdk.CollectionConverters._
+import collection.JavaConverters._
 
 import com.fasterxml.jackson.databind.{DeserializationFeature, JsonNode, ObjectMapper}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
