@@ -1,8 +1,3 @@
-resolvers += Resolver.url(
-  "typesafe sbt-plugins",
-  url("https://dl.bintray.com/typesafe/sbt-plugins")
-)(Resolver.ivyStylePatterns)
-
 addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "1.0.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.4.1")
 addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.6.3")
