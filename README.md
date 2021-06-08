@@ -1,6 +1,6 @@
 # 🚧 Work In Progress!! 🚧
 
-[Sangria](http://sangria-graphql.org/) [jackson](http://json4s.org) marshalling.
+[Sangria](https://sangria-graphql.github.io/) [jackson](https://json4s.org) marshalling.
 
 ![Continuous Integration](https://github.com/sangria-graphql/sangria-jackson/workflows/Continuous%20Integration/badge.svg)
 [![Coverage Status](http://coveralls.io/repos/sangria-graphql/sangria-jackson/badge.svg?branch=main&service=github)](http://coveralls.io/github/sangria-graphql/sangria-jackson?branch=main)
@@ -16,4 +16,4 @@ libraryDependencies += "org.sangria-graphql" %% "sangria-jackson" % "1.0.1"
 
 ## License
 
-**sangria-jackson** is licensed under [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+**sangria-jackson** is licensed under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
