@@ -5,7 +5,7 @@ mimaPreviousArtifacts := Set(
 )
 
 description := "Sangria jackson marshalling"
-homepage := Some(url("http://sangria-graphql.org"))
+homepage := Some(url("https://sangria-graphql.github.io/"))
 licenses := Seq(
   "Apache License, ASL Version 2.0" -> url(
     "http://www.apache.org/licenses/LICENSE-2.0"
@@ -42,7 +42,7 @@ libraryDependencies ++= Seq(
 ThisBuild / githubWorkflowTargetTags ++= Seq("v*")
 ThisBuild / githubWorkflowPublishTargetBranches :=
   Seq(RefPredicate.StartsWith(Ref.Tag("v")))
-  ThisBuild / githubWorkflowPublish := Seq(
+ThisBuild / githubWorkflowPublish := Seq(
   WorkflowStep.Sbt(
     List("ci-release"),
     env = Map(
@@ -61,7 +61,7 @@ enablePlugins(GhpagesPlugin)
 git.remoteRepo := "git@github.com:org.sangria-graphql/sangria-jackson.git"
 
 // nice *magenta* prompt!
-shellPrompt in ThisBuild := { state =>
+ThisBuild / shellPrompt := { state =>
   scala.Console.MAGENTA + Project
     .extract(state)
     .currentRef
