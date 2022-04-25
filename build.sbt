@@ -35,7 +35,7 @@ libraryDependencies ++= Seq(
   "org.sangria-graphql" %% "sangria-marshalling-api" % "1.0.7",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.13.2",
   "org.sangria-graphql" %% "sangria-marshalling-testkit" % "1.0.4" % Test,
-  "org.scalatest" %% "scalatest" % "3.2.11" % Test
+  "org.scalatest" %% "scalatest" % "3.2.12" % Test
 )
 
 // Release
