@@ -18,7 +18,7 @@ import com.fasterxml.jackson.module.scala.ScalaObjectMapper
 
 object jackson {
   private object util {
-    val mapper = new ObjectMapper() with ScalaObjectMapper
+    val mapper = new ObjectMapper with ScalaObjectMapper
     mapper.registerModule(DefaultScalaModule)
     mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
     val json: JsonNodeFactory = mapper.getNodeFactory

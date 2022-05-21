@@ -17,7 +17,7 @@ class JacksonSupportSpec
     with InputHandlingBehaviour
     with ParsingBehaviour {
 
-  val mapper = new ObjectMapper() with ScalaObjectMapper
+  val mapper = new ObjectMapper with ScalaObjectMapper
   mapper.registerModule(DefaultScalaModule)
   mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
   val json = mapper.getNodeFactory()
