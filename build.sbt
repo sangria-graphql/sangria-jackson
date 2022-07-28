@@ -32,7 +32,7 @@ scalacOptions ++= {
 javacOptions ++= Seq("-source", "8", "-target", "8")
 
 libraryDependencies ++= Seq(
-  "org.sangria-graphql" %% "sangria-marshalling-api" % "1.0.7",
+  "org.sangria-graphql" %% "sangria-marshalling-api" % "1.0.8",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.13.3",
   "org.sangria-graphql" %% "sangria-marshalling-testkit" % "1.0.4" % Test,
   "org.scalatest" %% "scalatest" % "3.2.12" % Test
