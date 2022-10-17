@@ -54,12 +54,6 @@ ThisBuild / githubWorkflowPublish := Seq(
   )
 )
 
-// Site and docs
-
-enablePlugins(SiteScaladocPlugin)
-enablePlugins(GhpagesPlugin)
-git.remoteRepo := "git@github.com:org.sangria-graphql/sangria-jackson.git"
-
 // nice *magenta* prompt!
 ThisBuild / shellPrompt := { state =>
   scala.Console.MAGENTA + Project
