@@ -12,7 +12,7 @@ licenses := Seq(
   )
 )
 
-ThisBuild / crossScalaVersions := Seq("2.12.17", "2.13.8")
+ThisBuild / crossScalaVersions := Seq("2.12.17", "2.13.15")
 ThisBuild / scalaVersion := crossScalaVersions.value.last
 ThisBuild / githubWorkflowPublishTargetBranches := List()
 ThisBuild / githubWorkflowBuildPreamble += WorkflowStep.Sbt(
@@ -64,7 +64,7 @@ ThisBuild / shellPrompt := { state =>
 
 inThisBuild(
   List(
-    scalaVersion := "2.13.8",
+    scalaVersion := "2.13.15",
     semanticdbEnabled := true,
     semanticdbVersion := scalafixSemanticdb.revision
   )
